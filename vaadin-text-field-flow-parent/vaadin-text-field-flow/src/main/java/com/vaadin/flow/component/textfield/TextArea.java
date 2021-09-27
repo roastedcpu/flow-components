@@ -155,6 +155,37 @@ public class TextArea extends GeneratedVaadinTextArea<TextArea, String>
         addValueChangeListener(listener);
     }
 
+    /**
+     * <p>
+     * A pattern to validate the {@code input} with.
+     * This pattern will apply to the whole text by default
+     * (multilineMode=false)
+     * </p>
+     *
+     * @param pattern
+     *            the String value to set
+     */
+    public void setPattern(String pattern) {
+        super.setPattern(pattern, false);
+        this.getValidationSupport().setPattern(pattern);
+    }
+
+    /**
+     * <p>
+     * A pattern to validate the {@code input} with.
+     * </p>
+     *
+     * @param pattern
+     *            the String value to set
+     * @param pattern
+     *            whether pattern validation is applied to every line
+     *            (true) or to the whole text at once (false)
+     */
+    public void setPattern(String pattern, boolean multilineMode) {
+        super.setPattern(pattern, multilineMode);
+        this.getValidationSupport().setPattern(pattern);
+    }
+
     private TextFieldValidationSupport getValidationSupport() {
         if (validationSupport == null) {
             validationSupport = new TextFieldValidationSupport(this);
